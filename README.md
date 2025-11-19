@@ -1,73 +1,286 @@
-# 🚀 Arbitrage Trading System
+# 🚀 BridgeFlow Testnet – Universal Multi-DEX Arbitrage Trading System
+A complete real-time arbitrage engine and analytics dashboard built for the **Ethereum Sepolia Testnet**, capable of scanning multiple decentralized exchanges, detecting profitable price differences, and executing automated trades – all through a powerful, modern UI.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
-[![Web3.js](https://img.shields.io/badge/Web3.js-4.x-orange.svg)](https://web3js.org/)
-[![Ethereum](https://img.shields.io/badge/Ethereum-Sepolia-3C3C3D.svg)](https://ethereum.org/)
+---
 
-A sophisticated, real-time multi-DEX arbitrage trading system that automatically detects and executes profitable trading opportunities across multiple decentralized exchanges on the Ethereum Sepolia testnet.
+## 🌐 Overview
 
-## 🌟 Features
+BridgeFlow consists of:
 
-### 🔄 Multi-DEX Arbitrage Scanning
-- **Real-time Monitoring**: Continuous scanning of 6+ decentralized exchanges
-- **Cross-DEX Analysis**: Identify price discrepancies across multiple platforms
-- **Triangular Arbitrage**: Detect complex multi-token arbitrage opportunities
-- **Gas-Aware Profits**: Calculate net profits after gas costs
+- ⚙️ **Backend Arbitrage Engine** (Node.js)
+- 💻 **Frontend Dashboard** (React + Vite)
+- 🔗 **Web3 Wallet Integration** (MetaMask)
+- 📡 **DEX Price Scanners** (Uniswap, SushiSwap, PancakeSwap, etc.)
+- 📊 **Real-Time Analytics**
+- 🤖 **Auto-Execution Trading Mode**
 
-### 🤖 Automated Trading Engine
-- **Smart Execution**: Automated trade execution with optimal routing
-- **Slippage Protection**: Configurable slippage tolerance settings
-- **Gas Optimization**: Dynamic gas price adjustment for maximum profitability
-- **Risk Management**: Built-in safety measures and stop-loss mechanisms
+This system is designed for **testnet experimentation**, learning MEV/arbitrage strategies, and simulating real DEX operations safely.
 
-### 📊 Advanced Dashboard
-- **Live Analytics**: Real-time profit tracking and performance metrics
-- **Trade History**: Comprehensive logging of all executed trades
-- **Wallet Integration**: Seamless MetaMask connection with balance tracking
-- **Customizable Alerts**: Notifications for profitable opportunities
+---
 
-### 🛡️ Security & Safety
-- **Testnet Environment**: Safe trading on Ethereum Sepolia testnet
-- **Demo Mode**: Risk-free practice with simulated trading
-- **Wallet Security**: Non-custodial design - you control your keys
-- **Transaction Validation**: Comprehensive pre-trade checks
+## 🖥️ Features
 
-## 🏪 Supported Decentralized Exchanges
+### 🔄 Multi-DEX Price Scanning
+- Monitors prices across 6+ DEXs  
+- Supports V2 + V3 pools  
+- Detects cross-DEX price gaps  
+- Identifies triangular arbitrage routes  
 
-| Exchange | Version | Status | Testnet Support |
-|----------|---------|--------|-----------------|
-| Uniswap | V2 & V3 | ✅ Active | ✅ Full |
-| Sushiswap | V2 | ✅ Active | ✅ Full |
-| PancakeSwap | V2 | ✅ Active | ✅ Full |
-| ShibaSwap | V1 | ✅ Active | ✅ Full |
-| QuickSwap | V2 | ✅ Active | ✅ Full |
-| ApeSwap | V2 | ✅ Active | ✅ Full |
+### ⚙️ Backend Trading Engine
+- Gas-optimized trade execution  
+- Slippage protection  
+- Auto mode + manual mode  
+- Real-time logging  
+- Profit calculation after gas  
 
-## 💎 Supported Tokens
+### 💹 Dashboard & Analytics
+- Total profit & trade count  
+- Wallet balance (Sepolia)  
+- Bot status (IDLE / RUNNING)  
+- Arbitrage alerts  
+- Token pairs monitoring  
 
-### Major Pairs
-- **WETH** (Wrapped Ethereum)
-- **USDC** (USD Coin)
-- **DAI** (Stablecoin)
-- **USDT** (Tether)
-- **WBTC** (Wrapped Bitcoin)
+### 🔐 Security
+- Non-custodial wallet usage  
+- Private keys stored locally through environment variables  
+- Testnet environment only  
+- Gas estimation checks  
+
+---
+
+## 📦 Project Folder Structure
+
+```
+bridgeflow-testnetnew/
+│
+├── backend/
+│   ├── server.js
+│   ├── services/
+│   ├── arbitrage/
+│   ├── config/
+│   ├── logs/
+│   ├── package.json
+│   └── .env.example
+│
+├── frontend/
+│   ├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── utils/
+│   ├── vite.config.js
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+# 🔧 1. Install System Dependencies
+
+### Update system (Linux recommended)
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+### Install Node.js 18+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo bash -
+sudo apt install -y nodejs
+node -v
+```
+
+### Install Git
+```bash
+sudo apt install git -y
+git --version
+```
+
+---
+
+# 📥 2. Clone the Repository
+
+```bash
+git clone https://github.com/rai8053/bridgeflow-testnetnew.git
+cd bridgeflow-testnetnew
+```
+
+---
+
+# ⚙️ 3. Backend Setup (Arbitrage Engine)
+
+### Enter backend directory:
+```bash
+cd backend
+```
+
+### Install required packages:
+```bash
+npm install
+```
+
+### Create environment file:
+```bash
+nano .env
+```
+
+Paste and modify:
+
+```env
+RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
+PRIVATE_KEY=YOUR_PRIVATE_KEY
+WALLET_ADDRESS=YOUR_PUBLIC_ADDRESS
+SLIPPAGE=0.5
+AUTO_TRADE=true
+GAS_STRATEGY=fast
+```
+
+Save → (CTRL + X → Y → ENTER)
+
+### Start backend:
+```bash
+npm start
+```
+
+Expected output:
+```
+✔ Connected to Sepolia
+✔ Scanning DEX pools...
+✔ Waiting for arbitrage opportunities...
+```
+
+---
+
+# 💻 4. Frontend Setup (Dashboard UI)
+
+### Enter frontend:
+```bash
+cd ../frontend
+```
+
+### Install dependencies:
+```bash
+npm install
+```
+
+### Start dashboard:
+```bash
+npm run dev
+```
+
+Dashboard will run at:
+
+👉 **http://localhost:3000**
+
+---
+
+# 📊 5. Dashboard Overview
+
+Your dashboard displays:
+
+- Total Profit  
+- Total Trades  
+- Bot Running Status  
+- Trading Balance  
+- DEX scanner output  
+- Arbitrage signals  
+- Wallet info (Sepolia ETH)  
+- Live metrics  
+
+```
+[  Dashboard Preview Removed: User Requested  ]
+```
+
+---
+
+# 🔄 6. Supported DEXs (Sepolia)
+
+| Exchange | Version | Status |
+|----------|---------|--------|
+| Uniswap | V2 + V3 | ✅ Active |
+| Sushiswap | V2 | ✅ Active |
+| PancakeSwap | V2 | ✅ Active |
+| ShibaSwap | V1 | ✅ Active |
+| QuickSwap | V2 | ✅ Active |
+| ApeSwap | V2 | ✅ Active |
+
+---
+
+# 🪙 7. Supported Token Pairs
+
+### Major Tokens
+- WETH  
+- USDC  
+- DAI  
+- USDT  
+- WBTC  
 
 ### DeFi Tokens
-- **LINK** (Chainlink)
-- **UNI** (Uniswap)
-- **AAVE** (Aave)
-- **COMP** (Compound)
-- **MKR** (Maker)
+- LINK  
+- UNI  
+- AAVE  
+- COMP  
+- MKR  
 
-## 🚀 Quick Start
+---
 
-### Prerequisites
+# 🚀 8. Production Mode (Optional)
 
-- **Node.js** (Version 18 or higher)
-- **MetaMask** browser extension
-- **Sepolia testnet ETH** for gas fees
-- **Modern web browser** with Web3 support
+You can run backend in PM2:
 
-  
+```bash
+npm install pm2 -g
+pm2 start server.js --name bridgeflow
+pm2 logs bridgeflow
+```
+
+---
+
+# 👨‍💻 9. Developer Commands
+
+### Backend
+```bash
+npm start
+npm run lint
+npm run test
+```
+
+### Frontend
+```bash
+npm run dev
+npm run build
+npm run preview
+```
+
+---
+
+# ⚠️ 10. Troubleshooting
+
+### ❌ MetaMask Not Connecting  
+- Enable Sepolia in networks  
+- Refresh webpage  
+- Clear browser cache  
+
+### ❌ Backend Not Starting  
+- Check `.env`  
+- Ensure RPC URL is valid  
+- Wallet must have Sepolia ETH  
+
+### ❌ No Arbitrage Signals  
+- Low volatility  
+- Try again later  
+- Increase `SLIPPAGE` to 1.0  
+
+---
+
+# 📘 11. License
+
+This project is under the **MIT License**.
+
+---
+
+# 🙋 Support
+For issues, create a GitHub issue here:  
+https://github.com/rai8053/bridgeflow-testnetnew/issues
+
+Developed by **Raihan Hazra (rai8053)**  
