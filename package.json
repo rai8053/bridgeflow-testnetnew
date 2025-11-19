@@ -1,0 +1,19 @@
+{
+  "name": "fullstack-bridgeflow",
+  "version": "1.0.0",
+  "description": "| DEX | Address | Network |\r |-----|---------|---------|\r | **Uniswap V2** | `0xC532a74256D3Db42D0Bf7a0400fEFDbad7694008` | Sepolia |\r | **Sushiswap** | `0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506` | Sepolia |\r | **PancakeSwap** | `0xEfF92A263d31888d860bD50809A8D171709b7b1c` | Sepolia |\r | **ShibaSwap** | `0xE11fc0B43ab98Eb36e1ac6E9a2F2f5d5a1106d2D` | Sepolia |\r | **QuickSwap** | `0xf39b7be294cb36de8c510e267b82bb588705d977` | Sepolia |\r | **ApeSwap** | `0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D` | Sepolia |",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ethers": "^6.15.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {}
+}
