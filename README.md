@@ -70,6 +70,4 @@ A sophisticated, real-time multi-DEX arbitrage trading system that automatically
 - **Sepolia testnet ETH** for gas fees
 - **Modern web browser** with Web3 support
 
-   ```bash
-   git clone https://github.com/rai8053/bridgeflow-testnet.git
-   cd bridgeflow-t
+  
