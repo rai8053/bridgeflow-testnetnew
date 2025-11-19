@@ -48,31 +48,35 @@ This system is designed for **testnet experimentation**, learning MEV/arbitrage 
 
 ---
 
-## 📦 Project Folder Structure
+# 📁 Project Structure
 
 ```
-bridgeflow-testnetnew/
+FULLSTACK BRIDGEFLOW - COPY/
 │
-├── backend/
-│   ├── server.js
-│   ├── services/
-│   ├── arbitrage/
-│   ├── config/
-│   ├── logs/
+├── interceptor-backend/
+│   ├── node_modules/
+│   ├── config.js
+│   ├── package-lock.json
 │   ├── package.json
-│   └── .env.example
+│   └── server.js
 │
-├── frontend/
-│   ├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── hooks/
-│   ├── utils/
-│   ├── vite.config.js
-│   └── package.json
+├── interceptor-frontend/
+│   ├── node_modules/
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── package.json
+│   └── README.md
 │
+├── node_modules/
+├── .gitignore
+├── create_and_push.ps1
+├── package-lock.json
+├── package.json
+├── push_monorepo.bat
+├── README_PUSH.md
 └── README.md
 ```
+
 
 ---
 
