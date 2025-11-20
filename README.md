@@ -1,252 +1,308 @@
 # 🚀 BridgeFlow Testnet – Universal Multi-DEX Arbitrage Trading System
-A complete real-time arbitrage engine and analytics dashboard built for the **Ethereum Sepolia Testnet**, capable of scanning multiple decentralized exchanges, detecting profitable price differences, and executing automated trades – all through a powerful, modern UI.
+
+BridgeFlow is a **full-stack arbitrage simulation platform** built for the  
+**Ethereum Sepolia Testnet**. It includes:
+
+- ⚙️ A Node.js **backend arbitrage engine**
+- 💻 A React + Vite **frontend dashboard**
+- 🔗 MetaMask **Web3 wallet integration**
+- 📡 Live **Uniswap V2/V3 price scanning**
+- 🤖 Optional **auto-trading simulation mode**
+- 📊 Real-time analytics: profits, trades, signals
+
+> ⚠️ **Important:**  
+> This project is for **learning, testing and simulation only**.  
+> It does **NOT** guarantee real profits and runs on the **testnet only**.
 
 ---
 
-## 🌐 Overview
+# ⭐ Features
 
-BridgeFlow consists of:
+### 🔄 Multi-DEX Price Scanner
+- Uniswap V2 & V3 router scanning  
+- `getAmountsOut()` live price comparison  
+- Cross-DEX arbitrage detection  
+- Triangular route analysis  
 
-- ⚙️ **Backend Arbitrage Engine** (Node.js)
-- 💻 **Frontend Dashboard** (React + Vite)
-- 🔗 **Web3 Wallet Integration** (MetaMask)
-- 📡 **DEX Price Scanners** (Uniswap, SushiSwap, PancakeSwap, etc.)
-- 📊 **Real-Time Analytics**
-- 🤖 **Auto-Execution Trading Mode**
-
-This system is designed for **testnet experimentation**, learning MEV/arbitrage strategies, and simulating real DEX operations safely.
-
----
-
-## 🖥️ Features
-
-### 🔄 Multi-DEX Price Scanning
-- Monitors prices across 6+ DEXs  
-- Supports V2 + V3 pools  
-- Detects cross-DEX price gaps  
-- Identifies triangular arbitrage routes  
-
-### ⚙️ Backend Trading Engine
-- Gas-optimized trade execution  
+### ⚙️ Trading Engine
+- Auto-mode and manual simulation  
+- Gas estimation  
 - Slippage protection  
-- Auto mode + manual mode  
-- Real-time logging  
-- Profit calculation after gas  
+- BigInt profit calculation  
+- Testnet-safe execution  
 
-### 💹 Dashboard & Analytics
-- Total profit & trade count  
-- Wallet balance (Sepolia)  
-- Bot status (IDLE / RUNNING)  
-- Arbitrage alerts  
-- Token pairs monitoring  
+### 📊 Dashboard (Frontend)
+- Wallet balance display  
+- Bot status  
+- Profit & trade counter  
+- Arbitrage signals  
+- Live price feeds  
+- Dark/light UI (if enabled)
 
 ### 🔐 Security
-- Non-custodial wallet usage  
-- Private keys stored locally through environment variables  
-- Testnet environment only  
-- Gas estimation checks  
+- Non-custodial MetaMask connection  
+- Private key stored only in `.env` (backend)  
+- Testnet-only flow  
 
 ---
 
 # 📁 Project Structure
 
 ```
-FULLSTACK BRIDGEFLOW - COPY/
+bridgeflow-testnetnew/
 │
-├── interceptor-backend/
-│   ├── node_modules/
+├── interceptor-backend/         # Backend Arbitrage Engine
+│   ├── server.js
 │   ├── config.js
-│   ├── package-lock.json
-│   ├── package.json
-│   └── server.js
+│   ├── .env.example
+│   └── package.json
 │
-├── interceptor-frontend/
-│   ├── node_modules/
-│   ├── .gitignore
-│   ├── package-lock.json
+├── interceptor-frontend/        # React Dashboard UI
+│   ├── src/
 │   ├── package.json
-│   └── README.md
+│   └── vite.config.js
 │
-├── node_modules/
-├── .gitignore
-├── create_and_push.ps1
-├── package-lock.json
-├── package.json
-├── push_monorepo.bat
-├── README_PUSH.md
-└── README.md
-```
-
-
----
-
-# 🔧 1. Install System Dependencies
-
-### Update system (Linux recommended)
-```bash
-sudo apt update && sudo apt upgrade -y
-```
-
-### Install Node.js 18+
-```bash
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo bash -
-sudo apt install -y nodejs
-node -v
-```
-
-### Install Git
-```bash
-sudo apt install git -y
-git --version
+├── README.md
+└── package.json
 ```
 
 ---
 
-# 📥 2. Clone the Repository
+# ⚡ Quickstart (3 Commands)
 
 ```bash
-git clone https://github.com/rai8053/bridgeflow-testnetnew.git
-cd bridgeflow-testnetnew
+git clone https://github.com/rai8053/bridgeflow-testnetnew
+cd bridgeflow-testnetnew/interceptor-backend && npm install && npm start
+cd ../interceptor-frontend && npm install && npm run dev
 ```
+
+Your dashboard will be available at:
+
+👉 **http://localhost:3000**
+
+Backend runs at:
+
+👉 **http://localhost:3001**
 
 ---
 
-# ⚙️ 3. Backend Setup (Arbitrage Engine)
+# 🔧 Backend Setup (Arbitrage Engine)
 
-### Enter backend directory:
+### 1️⃣ Enter backend folder
 ```bash
-cd backend
+cd interceptor-backend
 ```
 
-### Install required packages:
+### 2️⃣ Install dependencies
 ```bash
 npm install
 ```
 
-### Create environment file:
+### 3️⃣ Create your `.env` file
 ```bash
 nano .env
 ```
 
-Paste and modify:
+Paste this:
 
 ```env
 RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
-PRIVATE_KEY=YOUR_PRIVATE_KEY
-WALLET_ADDRESS=YOUR_PUBLIC_ADDRESS
+PRIVATE_KEY=0xYOUR_TESTNET_PRIVATE_KEY
+WALLET_ADDRESS=YOUR_PUBLIC_WALLET
 SLIPPAGE=0.5
 AUTO_TRADE=true
 GAS_STRATEGY=fast
+PORT=3001
 ```
 
-Save → (CTRL + X → Y → ENTER)
+⚠️ Use a **testnet wallet only**.
 
-### Start backend:
+### 4️⃣ Start backend
 ```bash
 npm start
 ```
 
-Expected output:
+Expected logs:
 ```
 ✔ Connected to Sepolia
-✔ Scanning DEX pools...
+✔ Scanning Uniswap pools...
 ✔ Waiting for arbitrage opportunities...
 ```
 
 ---
 
-# 💻 4. Frontend Setup (Dashboard UI)
+# 💻 Frontend Setup (Dashboard UI)
 
-### Enter frontend:
+### 1️⃣ Enter frontend folder
 ```bash
-cd ../frontend
+cd interceptor-frontend
 ```
 
-### Install dependencies:
+### 2️⃣ Install frontend dependencies
 ```bash
 npm install
 ```
 
-### Start dashboard:
+### 3️⃣ Start dev server
 ```bash
 npm run dev
 ```
 
-Dashboard will run at:
+Frontend will launch at:
 
-👉 **http://localhost:3000**
-
----
-
-# 📊 5. Dashboard Overview
-
-Your dashboard displays:
-
-- Total Profit  
-- Total Trades  
-- Bot Running Status  
-- Trading Balance  
-- DEX scanner output  
-- Arbitrage signals  
-- Wallet info (Sepolia ETH)  
-- Live metrics  
-
-```
-[  Dashboard Preview Removed: User Requested  ]
-```
+👉 http://localhost:3000
 
 ---
 
-# 🔄 6. Supported DEXs (Sepolia)
+# 🔗 Web3 Setup (MetaMask + Ethers.js)
+
+## 🦊 Install MetaMask
+Download from:  
+https://metamask.io
+
+---
+
+## 🌐 Add Sepolia Testnet to MetaMask
+
+Go to **Networks → Add Network → Add manually**:
+
+```
+Network Name: Sepolia
+RPC URL: https://rpc.sepolia.org
+Chain ID: 11155111
+Currency Symbol: ETH
+Block Explorer: https://sepolia.etherscan.io
+```
+
+Save it.
+
+---
+
+## 🪙 Get Sepolia Testnet ETH  
+Needed for simulated gas usage.
+
+Faucets:
+
+- https://sepoliafaucet.com  
+- https://www.alchemy.com/faucets/ethereum-sepolia  
+
+---
+
+# 📦 Web3 Installation (Frontend)
+
+Inside `interceptor-frontend` run:
+
+### Install ethers.js
+```bash
+npm install ethers
+```
+
+### (Optional) Wallet detection
+```bash
+npm install @metamask/detect-provider
+```
+
+### (Optional) Wagmi + Viem
+```bash
+npm install wagmi viem
+```
+
+---
+
+# 🔌 Wallet Connection Example (React)
+
+```javascript
+import { ethers } from "ethers";
+
+async function connectWallet() {
+  if (!window.ethereum) {
+    alert("Install MetaMask!");
+    return;
+  }
+
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  const accounts = await provider.send("eth_requestAccounts", []);
+  console.log("Connected:", accounts[0]);
+}
+```
+
+Button example:
+
+```jsx
+<button onClick={connectWallet}>Connect Wallet</button>
+```
+
+---
+
+# 📡 Force Switch to Sepolia (JS)
+
+```javascript
+await window.ethereum.request({
+  method: "wallet_switchEthereumChain",
+  params: [{ chainId: "0xaa36a7" }]  // Hex for 11155111
+});
+```
+
+---
+
+# 📦 Environment Variables Summary
+
+| Variable | Description |
+|---------|-------------|
+| `RPC_URL` | Sepolia RPC endpoint |
+| `PRIVATE_KEY` | Testnet private key |
+| `WALLET_ADDRESS` | Public address |
+| `SLIPPAGE` | Allowed price impact |
+| `AUTO_TRADE` | true/false simulation |
+| `GAS_STRATEGY` | fast / medium / slow |
+| `PORT` | Backend port |
+
+---
+
+# 🧩 Supported DEXes (Sepolia Verified)
 
 | Exchange | Version | Status |
 |----------|---------|--------|
-| Uniswap | V2 + V3 | ✅ Active |
-| Sushiswap | V2 | ✅ Active |
-| PancakeSwap | V2 | ✅ Active |
-| ShibaSwap | V1 | ✅ Active |
-| QuickSwap | V2 | ✅ Active |
-| ApeSwap | V2 | ✅ Active |
+| Uniswap | V2 | ✅ Active |
+| Uniswap | V3 | ✅ Active |
+
+> ⚠️ Note: PancakeSwap, QuickSwap, ApeSwap, ShibaSwap **are NOT deployed** on Sepolia.  
+> Do not include them unless YOU deploy custom routers.
 
 ---
 
-# 🪙 7. Supported Token Pairs
+# 🪙 Supported Tokens (Sepolia Testnet)
 
-### Major Tokens
 - WETH  
 - USDC  
 - DAI  
-- USDT  
-- WBTC  
-
-### DeFi Tokens
 - LINK  
 - UNI  
-- AAVE  
-- COMP  
-- MKR  
+
+You must update your router + token addresses accordingly in your backend config.
 
 ---
 
-# 🚀 8. Production Mode (Optional)
+# 🏗 Architecture Diagram
 
-You can run backend in PM2:
-
-```bash
-npm install pm2 -g
-pm2 start server.js --name bridgeflow
-pm2 logs bridgeflow
+```
+[ React Dashboard ]  <---->  [ Node.js Arbitrage Backend ]
+         |                             |
+  MetaMask Wallet                 Ethers.js Provider
+         |                             |
+         v                             v
+     User Actions   <---->   Sepolia RPC Node  <---->  Uniswap V2/V3 Routers
 ```
 
 ---
 
-# 👨‍💻 9. Developer Commands
+# 🧰 Developer Commands
 
 ### Backend
 ```bash
 npm start
+npm test
 npm run lint
-npm run test
 ```
 
 ### Frontend
@@ -258,33 +314,33 @@ npm run preview
 
 ---
 
-# ⚠️ 10. Troubleshooting
+# ⚠️ Troubleshooting
 
-### ❌ MetaMask Not Connecting  
-- Enable Sepolia in networks  
-- Refresh webpage  
-- Clear browser cache  
+### ❌ MetaMask Not Connecting
+- Check browser permissions  
+- Make sure you're on Sepolia  
+- Clear cache  
 
-### ❌ Backend Not Starting  
-- Check `.env`  
-- Ensure RPC URL is valid  
-- Wallet must have Sepolia ETH  
+### ❌ Backend Not Starting
+- Invalid `.env`  
+- Wrong RPC URL  
+- Missing token/router addresses  
 
-### ❌ No Arbitrage Signals  
-- Low volatility  
+### ❌ No Arbitrage Found
+- Testnet has low volatility  
+- Try increasing `SLIPPAGE` to `1.0`  
 - Try again later  
-- Increase `SLIPPAGE` to 1.0  
 
 ---
 
-# 📘 11. License
-
-This project is under the **MIT License**.
+# 📘 License
+This project is licensed under the **MIT License**.
 
 ---
 
 # 🙋 Support
-For issues, create a GitHub issue here:  
-https://github.com/rai8053/bridgeflow-testnetnew/issues
+Open an issue here:
+
+👉 https://github.com/rai8053/bridgeflow-testnetnew/issues
 
 Developed by **Raihan Hazra (rai8053)**  
